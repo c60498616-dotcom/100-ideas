@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>100 Идей для Заработка на Веб-Разработке с Вайбкодингом</title>
+  <meta name="description" content="Интерактивная подборка из 100 прибыльных идей для веб-разработчиков, использующих AI-ассистенты и вайбкодинг. С готовыми промптами, гайдами и калькулятором доходов.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Фоновые светящиеся сферы -->
+  <div class="bg-glow-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <div class="container">
+    
+    <!-- Шапка страницы -->
+    <header>
+      <div class="header-top">
+        <div class="logo-container">
+          <div class="logo-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <span class="logo-text">VibeDev 100</span>
+        </div>
+        
+        <div class="header-actions">
+          <!-- Кнопка только сохраненных -->
+          <button class="btn-toggle-saved" id="show-saved-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="btn-icon"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            Избранное (<span id="saved-count-tab">0</span>)
+          </button>
+          
+          <!-- Переключатель темы -->
+          <button class="theme-toggle" id="theme-toggle" aria-label="Сменить тему оформления">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun-icon"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Главный баннер -->
+      <div class="hero">
+        <h1 class="hero-title">100 Идей для Заработка на Веб-Разработке</h1>
+        <p class="hero-subtitle">Ускорь свой путь к доходу с помощью вайбкодинга. Выбирай микро-проекты, копируй готовые AI-промпты, рассчитывай прибыль и запускай MVP за один день!</p>
+      </div>
+    </header>
+
+    <!-- Вкладки навигации -->
+    <div class="nav-tabs-container">
+      <button class="nav-tab active" id="tab-ideas">💡 100 Идей Заработка</button>
+      <button class="nav-tab" id="tab-leads">🎯 Поиск Клиентов (Лиды)</button>
+    </div>
+
+    <!-- Область идей (по умолчанию видимая) -->
+    <div id="ideas-view">
+      <!-- Сводная аналитика (Статистика) -->
+      <section class="stats-grid">
+      <div class="stat-card" id="stat-total-ideas">
+        <div class="stat-val">100</div>
+        <div class="stat-label">Проверенных идей</div>
+      </div>
+      <div class="stat-card" id="stat-categories">
+        <div class="stat-val">10</div>
+        <div class="stat-label">Категорий монетизации</div>
+      </div>
+      <div class="stat-card" id="stat-time-to-mvp">
+        <div class="stat-val accent">1 день</div>
+        <div class="stat-label">Среднее время запуска MVP</div>
+      </div>
+      <div class="stat-card" id="stat-saved-count">
+        <div class="stat-val" id="saved-count-badge">0</div>
+        <div class="stat-label">В вашем списке избранного</div>
+      </div>
+    </section>
+
+    <!-- Раздел управления (Фильтры, Поиск) -->
+    <section class="controls-panel">
+      <div class="search-filter-row">
+        <!-- Поиск -->
+        <div class="search-box">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" class="search-input" id="search-input" placeholder="Поиск по технологиям, названию или описанию...">
+          <button class="clear-search-btn" id="clear-search" aria-label="Очистить поиск">&times;</button>
+        </div>
+        
+        <!-- Сложность -->
+        <div class="filter-group">
+          <span class="filter-label">Сложность:</span>
+          <div class="diff-filters">
+            <label class="checkbox-label" id="label-diff-easy">
+              <input type="checkbox" class="diff-checkbox" value="easy" checked id="checkbox-diff-easy">
+              Легко
+            </label>
+            <label class="checkbox-label" id="label-diff-medium">
+              <input type="checkbox" class="diff-checkbox" value="medium" checked id="checkbox-diff-medium">
+              Средне
+            </label>
+            <label class="checkbox-label" id="label-diff-hard">
+              <input type="checkbox" class="diff-checkbox" value="hard" checked id="checkbox-diff-hard">
+              Сложно
+            </label>
+          </div>
+        </div>
+
+        <!-- Сортировка -->
+        <div class="filter-group">
+          <span class="filter-label">Сортировка:</span>
+          <select class="select-box" id="sort-select" aria-label="Сортировка идей">
+            <option value="id-asc">По порядку (1-100)</option>
+            <option value="id-desc">В обратном порядке</option>
+            <option value="title">По названию (А-Я)</option>
+            <option value="difficulty">По сложности</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Категории (Чипсы фильтрации) -->
+      <div class="category-filters-container">
+        <div class="category-chips" id="category-filters">
+          <!-- Рендерится динамически из JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Сетка карточек -->
+    <main class="ideas-grid-container">
+      <div class="grid-header-info">
+        <span id="count-stats">Найдено идей: 100</span>
+      </div>
+      
+      <div class="ideas-grid" id="ideas-grid">
+        <!-- Карточки рендерятся из JS -->
+      </div>
+    </div> <!-- Конец #ideas-view -->
+
+    <!-- Область лидогенерации (скрытая по умолчанию) -->
+    <div id="leads-view" style="display: none;">
+      <section class="leads-hero">
+        <h2 class="leads-title">🎯 Анализатор Веб-Присутствия & Генератор Клиентов</h2>
+        <p class="leads-subtitle">Импортируйте файл <code>leads_to_contact.csv</code>, сгенерированный скрейпером Яндекс.Карт, чтобы увидеть заведения с отсутствующим или слабым сайтом, рассчитать потенциальный доход и получить готовые шаблоны для связи.</p>
+      </section>
+
+      <!-- Импорт файла и виджет скрейпера -->
+      <section class="leads-upload-section" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 20px; margin-bottom: 30px;">
+        <div class="file-upload-card" id="file-upload-card" style="margin-bottom: 0; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <input type="file" id="csv-file-input" accept=".csv" style="display: none;">
+          <div class="upload-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/><path d="M21 8h-6M18 5v6"/><circle cx="9" cy="9" r="1"/></svg>
+          </div>
+          <h3>Импортировать leads_to_contact.csv</h3>
+          <p>Перетащите файл сюда или нажмите для выбора на компьютере</p>
+          <div class="file-info" id="file-info" style="display: none;">
+            <span class="file-name" id="file-name">filename.csv</span>
+            <button class="btn-remove-file" id="btn-remove-file">&times;</button>
+          </div>
+        </div>
+
+        <div class="scraper-control-card" style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--border-radius-lg); padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <h3 style="margin-top: 0; margin-bottom: 8px; font-size: 16px; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+              <span>🤖</span> Сборщик лидов Яндекс.Карт
+            </h3>
+            <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.4;">
+              Запустите наш автономный Playwright-скрейпер локально для сбора свежих лидов в любом городе и нише.
+            </p>
+            <div style="background: rgba(0,0,0,0.25); border-radius: var(--border-radius-sm); padding: 10px 12px; font-family: monospace; font-size: 11px; color: var(--text-primary); border: 1px solid rgba(255,255,255,0.05); margin-bottom: 12px; position: relative; display: flex; align-items: center; justify-content: space-between;">
+              <span><span style="color: var(--text-muted); user-select: none;">$</span> python yandex_scraper_no_key.py</span>
+              <button class="btn-copy-code" id="btn-copy-scraper-cmd" style="background: var(--card-border); border: none; border-radius: 4px; color: var(--text-primary); padding: 3px 6px; font-size: 10px; cursor: pointer; transition: background 0.2s;">Копировать</button>
+            </div>
+            <div style="font-size: 11px; color: var(--text-secondary); line-height: 1.4;">
+              <strong>Кастомизация:</strong> Измените <code>QUERY</code> в <code>yandex_scraper_no_key.py</code> на вашу тему (напр. <code>"салон красоты Казань"</code>).
+            </div>
+          </div>
+          <div style="margin-top: 10px; font-size: 10px; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
+            <span style="display:inline-block; width:6px; height:6px; background:var(--color-success); border-radius:50%;"></span> Скрипт готов к запуску в терминале
+          </div>
+        </div>
+      </section>
+
+      <!-- Основная рабочая область лидов -->
+      <section class="leads-content-area" id="leads-content-area">
+        
+        <!-- Аналитика лидов -->
+        <div class="leads-stats-grid">
+          <div class="lead-stat-card">
+            <div class="lead-stat-val" id="lead-stat-total">0</div>
+            <div class="lead-stat-label">Всего проанализировано</div>
+          </div>
+          <div class="lead-stat-card border-high">
+            <div class="lead-stat-val text-high" id="lead-stat-high">0</div>
+            <div class="lead-stat-label">Высокий приоритет (Нет сайта)</div>
+          </div>
+          <div class="lead-stat-card border-medium">
+            <div class="lead-stat-val text-medium" id="lead-stat-medium">0</div>
+            <div class="lead-stat-label">Средний приоритет (VK/Конструктор)</div>
+          </div>
+          <div class="lead-stat-card border-accent">
+            <div class="lead-stat-val text-accent" id="lead-stat-mrr">0 ₽</div>
+            <div class="lead-stat-label">Потенциальный доход (фикс)</div>
+          </div>
+        </div>
+
+        <!-- Поиск и фильтры лидов -->
+        <div class="leads-filter-bar">
+          <div class="leads-search-box">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="leads-search-input" placeholder="Поиск лидов по названию или адресу...">
+          </div>
+          <div class="leads-filter-groups">
+            <select class="select-box" id="leads-priority-filter" aria-label="Фильтр по приоритету">
+              <option value="all">Все приоритеты</option>
+              <option value="high">Высокий (Нет сайта / Соцсеть)</option>
+              <option value="medium">Средний (Шаблон/Конструктор)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Таблица лидов -->
+        <div class="leads-table-wrapper">
+          <table class="leads-table" id="leads-table" style="display: none;">
+            <thead>
+              <tr>
+                <th>Название заведения</th>
+                <th>Адрес</th>
+                <th>Текущий сайт / Сеть</th>
+                <th>Статус лида</th>
+                <th>Решение & Коммерческое предложение</th>
+              </tr>
+            </thead>
+            <tbody id="leads-table-body">
+              <!-- Рендерится из JS -->
+            </tbody>
+          </table>
+          
+          <div class="empty-leads-state" id="empty-leads-state">
+            <div class="empty-icon">🎯</div>
+            <h3>Список лидов пуст</h3>
+            <p>Загрузите файл <code>leads_to_contact.csv</code> или выберите одну из демонстрационных баз заведений Казани:</p>
+            <div style="display: flex; gap: 12px; justify-content: center; margin-top: 15px; flex-wrap: wrap;">
+              <button class="btn btn-secondary" id="btn-load-demo-leads">🚗 Демо: Автосервисы</button>
+              <button class="btn btn-primary" id="btn-load-beauty-leads">💅 Демо: Салоны красоты</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Подвал -->
+    <footer>
+      <p>&copy; 2026 VibeDev Hub. Сделано с помощью вайбкодинга на Antigravity AI.</p>
+    </footer>
+  </div>
+
+  <!-- ДЕТАЛЬНОЕ СЛАЙД-ОКНО (МОДАЛКА) -->
+  <div class="modal-overlay" id="details-modal">
+    <div class="modal-drawer" id="modal-drawer-container">
+      
+      <!-- Хедер модалки -->
+      <div class="modal-header-row">
+        <div class="modal-header-left">
+          <div class="modal-badges">
+            <div id="modal-category"><!-- Категория --></div>
+            <div id="modal-diff"><!-- Сложность --></div>
+          </div>
+          <h2 id="modal-title">Название идеи</h2>
+        </div>
+        <button class="close-modal" aria-label="Закрыть подробности" id="modal-close-btn">&times;</button>
+      </div>
+
+      <!-- Характеристики -->
+      <div class="modal-stat-bar">
+        <div class="modal-stat-item">
+          <span class="modal-stat-lbl">Доходный потенциал</span>
+          <span class="modal-stat-val revenue" id="modal-potential">300$ - 1500$ / мес</span>
+        </div>
+        <div class="modal-stat-item">
+          <span class="modal-stat-lbl">Рекомендуемый Стек</span>
+          <div class="tech-tags" id="modal-tech-stack" style="margin-top: 4px;">
+            <!-- Стек -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Описание -->
+      <div class="modal-section">
+        <h3 class="modal-section-title">О проекте</h3>
+        <p class="modal-desc-p" id="modal-desc">Подробное описание...</p>
+      </div>
+
+      <!-- Ключевые фичи MVP -->
+      <div class="modal-section">
+        <h3 class="modal-section-title">Ключевой функционал MVP</h3>
+        <ul class="features-list" id="modal-features">
+          <!-- Фичи -->
+        </ul>
+      </div>
+
+      <!-- Калькулятор доходов -->
+      <div class="modal-section">
+        <h3 class="modal-section-title">Калькулятор окупаемости</h3>
+        <div class="calc-widget">
+          <div class="calc-row">
+            <div class="calc-slider-header">
+              <span class="calc-lbl">Трафик (посетителей в месяц)</span>
+              <span class="calc-val" id="value-traffic">5 000</span>
+            </div>
+            <input type="range" class="calc-slider" id="slider-traffic" min="500" max="50000" step="500" value="5000" aria-label="Трафик">
+          </div>
+          
+          <div class="calc-row">
+            <div class="calc-slider-header">
+              <span class="calc-lbl">Конверсия в покупку / подписку</span>
+              <span class="calc-val" id="value-conversion">1.5%</span>
+            </div>
+            <input type="range" class="calc-slider" id="slider-conversion" min="0.1" max="10" step="0.1" value="1.5" aria-label="Конверсия">
+          </div>
+
+          <div class="calc-row">
+            <div class="calc-slider-header">
+              <span class="calc-lbl">Средний чек (в USD)</span>
+              <span class="calc-val" id="value-price">$10</span>
+            </div>
+            <input type="range" class="calc-slider" id="slider-price" min="1" max="1000" step="1" value="10" aria-label="Средний чек">
+          </div>
+
+          <div class="calc-result-box">
+            <div class="calc-result-lbl">Расчетный ежемесячный доход (MRR)</div>
+            <div class="calc-result-val" id="calculated-revenue-value">$750 / мес</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Гайд по реализации -->
+      <div class="modal-section">
+        <h3 class="modal-section-title">Пошаговый план разработки</h3>
+        <div id="modal-guide">
+          <!-- Гайд -->
+        </div>
+      </div>
+
+      <!-- Промпт для вайбкодинга -->
+      <div class="modal-section">
+        <h3 class="modal-section-title">Промпт для AI (Cursor / Claude)</h3>
+        <div class="prompt-box">
+          <textarea class="prompt-textarea" id="modal-prompt-text" readonly aria-label="Промпт для ИИ"></textarea>
+          <div class="prompt-actions">
+            <button class="btn btn-primary" id="copy-prompt-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              Копировать промпт
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Кнопки действий -->
+      <div class="modal-actions-row">
+        <button class="btn btn-secondary" id="modal-bookmark-action">
+          Сохранить в избранное
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  
+  <!-- Скрипт переключения темы -->
+  <script id="theme-script">
+    document.addEventListener("DOMContentLoaded", () => {
+      const themeToggle = document.getElementById("theme-toggle");
+      
+      function updateThemeIcon(theme) {
+        if (theme === "light") {
+          themeToggle.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          `;
+        } else {
+          themeToggle.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun-icon"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          `;
+        }
+      }
+
+      themeToggle.addEventListener("click", () => {
+        const currentTheme = document.documentElement.getAttribute("data-theme");
+        const newTheme = currentTheme === "light" ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", newTheme);
+        localStorage.setItem("vibe-theme", newTheme);
+        updateThemeIcon(newTheme);
+      });
+
+      // Инициализация при загрузке
+      const savedTheme = localStorage.getItem("vibe-theme") || "dark";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+      updateThemeIcon(savedTheme);
+    });
+  </script>
+</body>
+</html>
