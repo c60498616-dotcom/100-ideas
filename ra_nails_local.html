@@ -3,6 +3,13 @@
 <html class="scroll-smooth overflow-x-hidden" lang="ru"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script>
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+</script>
 <title>Ra nails — Безупречный маникюр в Казани</title>
 <meta name="description" content="Студия Ra nails в Казани — комбинированный маникюр, педикюр, наращивание ногтей и ресниц. Премиальный сервис на Сибирском тракте, 34к4. Запись онлайн."/>
 <meta property="og:title" content="Ra nails — Безупречный маникюр в Казани"/>
@@ -239,6 +246,102 @@
         }
         .lightbox-arrow.prev { left: 20px; }
         .lightbox-arrow.next { right: 20px; }
+
+        /* Dark Mode overrides */
+        .dark body {
+            background-color: #150906 !important;
+            color: #f6efee !important;
+        }
+        
+        .dark .text-primary {
+            color: #f7ddd5 !important;
+        }
+        
+        .dark .text-on-surface-variant {
+            color: #dac1b9 !important;
+        }
+
+        .dark .text-on-tertiary-container {
+            color: #b2a4a0 !important;
+        }
+        
+        .dark .text-secondary {
+            color: #ffe088 !important;
+        }
+        
+        .dark .dotted-leader {
+            border-bottom: 1px dotted rgba(255, 224, 136, 0.3) !important;
+        }
+        
+        .dark .bg-surface-container-low {
+            background-color: #261814 !important;
+        }
+        
+        .dark .bg-surface {
+            background-color: #150906 !important;
+        }
+        
+        .dark .border-outline-variant\/20 {
+            border-color: rgba(218, 193, 185, 0.15) !important;
+        }
+        
+        .dark .glass-card {
+            background: rgba(38, 24, 20, 0.7) !important;
+            border: 1px solid rgba(247, 221, 213, 0.15) !important;
+        }
+
+        .dark .mobile-menu {
+            background: rgba(21, 9, 6, 0.97) !important;
+        }
+        
+        .dark .mobile-menu a {
+            color: #f7ddd5 !important;
+        }
+        
+        .dark .mobile-menu a:hover {
+            color: #ffe088 !important;
+        }
+        
+        .dark input, .dark select {
+            color: #f6efee !important;
+            border-color: rgba(218, 193, 185, 0.3) !important;
+        }
+        
+        .dark input::placeholder {
+            color: rgba(218, 193, 185, 0.5) !important;
+        }
+        
+        .dark select option {
+            background-color: #261814 !important;
+            color: #f6efee !important;
+        }
+        
+        .dark .border-secondary {
+            border-color: #ffe088 !important;
+            color: #ffe088 !important;
+        }
+        
+        .dark .border-secondary:hover {
+            background-color: rgba(255, 224, 136, 0.1) !important;
+        }
+        
+        .dark .bg-primary {
+            background-color: #f7ddd5 !important;
+            color: #150906 !important;
+        }
+        
+        .dark .bg-primary:hover {
+            opacity: 0.9 !important;
+        }
+        
+        .dark .tab-btn.bg-primary {
+            color: #150906 !important;
+        }
+        
+        .dark .hover\:border-secondary\/30:hover {
+            border-color: rgba(255, 224, 136, 0.3) !important;
+        }
+
         /* Responsive */
         body { overflow-x: hidden; }
         @media (max-width: 768px) {
@@ -275,10 +378,22 @@
 <a class="nav-link font-label-md text-label-md text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors" href="#portfolio" data-section="portfolio">Портфолио</a>
 <a class="nav-link font-label-md text-label-md text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors" href="#contacts" data-section="contacts">Контакты</a>
 </div>
-<a class="hidden md:inline-block bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md tracking-wider hover:opacity-80 transition-all uppercase text-center" href="#contacts">Записаться онлайн</a>
-<button class="md:hidden text-primary" onclick="toggleMobileMenu()" aria-label="Меню">
+<div class="hidden md:flex items-center gap-4">
+<button id="theme-toggle" class="p-2 rounded-full text-on-surface-variant dark:text-on-tertiary-container hover:bg-surface-variant/20 transition-all cursor-pointer animate-none" aria-label="Переключить тему">
+<span class="material-symbols-outlined dark:hidden">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:block">light_mode</span>
+</button>
+<a class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md tracking-wider hover:opacity-80 transition-all uppercase text-center" href="#contacts">Записаться онлайн</a>
+</div>
+<div class="flex md:hidden items-center gap-2">
+<button id="theme-toggle-mobile" class="p-2 rounded-full text-on-surface-variant dark:text-on-tertiary-container hover:bg-surface-variant/20 transition-all cursor-pointer" aria-label="Переключить тему">
+<span class="material-symbols-outlined dark:hidden">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:block">light_mode</span>
+</button>
+<button class="text-primary" onclick="toggleMobileMenu()" aria-label="Меню">
 <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
 </button>
+</div>
 </div>
 </nav>
 <!-- Mobile Menu -->
@@ -302,7 +417,7 @@
 <div class="max-w-2xl">
 <h1 class="font-headline-display text-headline-display headline-display-responsive text-primary mb-6">Безупречный маникюр и забота о ваших руках в Казани</h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant mb-10 leading-relaxed">
-                    Студия Ra nails — безопасный маникюр, трендовые дизайны и премиальный сервис на улице Побежимова. Погрузитесь в атмосферу спокойствия и красоты.
+                    Студия Ra nails — безопасный маникюр, трендовые дизайны и премиальный сервис на Сибирском тракте. Погрузитесь в атмосферу спокойствия и красоты.
                 </p>
 <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
 <a class="bg-primary text-on-primary px-6 sm:px-10 py-3 sm:py-4 rounded-full font-label-md text-label-md tracking-widest hover:scale-105 hover:shadow-lg hover:shadow-secondary/20 transition-all duration-300 uppercase inline-block cursor-pointer text-center" href="#contacts">Записаться онлайн</a>
@@ -695,15 +810,15 @@
 <form class="space-y-6">
 <div>
 <label class="font-label-md text-label-md uppercase text-on-tertiary-container mb-2 block">Ваше имя</label>
-<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-secondary transition-all px-0 py-3 placeholder:text-outline/50 font-body-md" placeholder="Иван Иванов" type="text"/>
+<input id="booking-name" class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-secondary transition-all px-0 py-3 placeholder:text-outline/50 font-body-md" placeholder="Иван Иванов" type="text"/>
 </div>
 <div>
 <label class="font-label-md text-label-md uppercase text-on-tertiary-container mb-2 block">Телефон</label>
-<input class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-secondary transition-all px-0 py-3 placeholder:text-outline/50 font-body-md" placeholder="+7 (___) ___-__-__" type="tel"/>
+<input id="booking-phone" class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-secondary transition-all px-0 py-3 placeholder:text-outline/50 font-body-md" placeholder="+7 (___) ___-__-__" type="tel"/>
 </div>
 <div>
 <label class="font-label-md text-label-md uppercase text-on-tertiary-container mb-2 block">Желаемая услуга</label>
-<select class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-secondary transition-all px-0 py-3 font-body-md appearance-none">
+<select id="booking-service" class="w-full bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-secondary transition-all px-0 py-3 font-body-md appearance-none">
 <option>Маникюр + гель-лак (1 800 ₽)</option>
 <option>АКЦИЯ — маникюр + гель-лак (1 499 ₽)</option>
 <option>Наращивание ногтей (2 600 ₽)</option>
@@ -758,7 +873,10 @@
 <button class="lightbox-arrow prev" onclick="event.stopPropagation();navigateLightbox(-1)">
 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
 </button>
-<img src="" alt="Фото"/>
+<button class="absolute top-5 right-6 text-white bg-white/10 p-3 rounded-full hover:bg-white/20 transition-all cursor-pointer" onclick="closeLightbox()" aria-label="Закрыть">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+</button>
+<img src="" alt="Фото" onclick="event.stopPropagation()"/>
 <button class="lightbox-arrow next" onclick="event.stopPropagation();navigateLightbox(1)">
 <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
 </button>
@@ -850,13 +968,85 @@
 
         // Booking form
         function submitBooking() {
-            const form = document.querySelector('#contacts form');
-            const name = form.querySelector('input[type="text"]').value;
-            const phone = form.querySelector('input[type="tel"]').value;
+            const name = document.getElementById('booking-name').value.trim();
+            const phone = document.getElementById('booking-phone').value.trim();
+            const service = document.getElementById('booking-service').value;
             if (!name || !phone) { alert('Пожалуйста, заполните имя и телефон'); return; }
-            const msg = encodeURIComponent(`Здравствуйте! Хочу записаться.\nИмя: ${name}\nТелефон: ${phone}`);
+            const msg = encodeURIComponent(`Здравствуйте! Хочу записаться в Ra nails 💅\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n💅 Услуга: ${service}`);
             window.open(`https://wa.me/79872349822?text=${msg}`, '_blank');
         }
+
+        // Phone input mask
+        const phoneInput = document.getElementById('booking-phone');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', e => {
+                let input = e.target.value.replace(/\D/g, '');
+                if (input.startsWith('7') || input.startsWith('8')) {
+                    input = input.substring(1);
+                }
+                let formatted = '+7 (';
+                if (input.length > 0) {
+                    formatted += input.substring(0, 3);
+                }
+                if (input.length >= 4) {
+                    formatted += ') ' + input.substring(3, 6);
+                }
+                if (input.length >= 7) {
+                    formatted += '-' + input.substring(6, 8);
+                }
+                if (input.length >= 9) {
+                    formatted += '-' + input.substring(8, 10);
+                }
+                
+                if (e.target.value === '') {
+                    e.target.value = '';
+                } else {
+                    e.target.value = formatted;
+                }
+            });
+            phoneInput.addEventListener('keydown', e => {
+                if (e.key === 'Backspace' && phoneInput.value.length <= 4) {
+                    phoneInput.value = '';
+                }
+            });
+        }
+
+        // Lightbox swipe gestures for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const lightboxEl = document.getElementById('lightbox');
+        if (lightboxEl) {
+            lightboxEl.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            
+            lightboxEl.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+            
+            function handleSwipe() {
+                const diffX = touchEndX - touchStartX;
+                if (Math.abs(diffX) > 50) {
+                    if (diffX > 0) {
+                        navigateLightbox(-1);
+                    } else {
+                        navigateLightbox(1);
+                    }
+                }
+            }
+        }
+
+        // Dark Mode Toggle
+        const toggleTheme = () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        };
+
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleBtnMobile = document.getElementById('theme-toggle-mobile');
+        if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+        if (themeToggleBtnMobile) themeToggleBtnMobile.addEventListener('click', toggleTheme);
 
         // Navigation scroll effect
         window.addEventListener('scroll', () => {
