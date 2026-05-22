@@ -106,6 +106,9 @@
         }
     </script>
 <style>
+        .tab-btn.bg-primary {
+            color: #ffffff !important;
+        }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
         }
@@ -346,7 +349,7 @@
 <h2 class="font-headline-lg text-headline-lg headline-lg-responsive text-primary mt-4">Наши услуги</h2>
 </div>
 <div class="flex justify-start md:justify-center mb-12 overflow-x-auto tab-scroll py-2 px-4 md:px-0" id="price-tabs">
-<div class="inline-flex glass-card p-1 rounded-full mx-auto">
+<div class="inline-flex glass-card p-1 rounded-full mx-auto flex-shrink-0">
 <button class="tab-btn px-5 sm:px-8 py-3 rounded-full font-label-md text-label-md uppercase transition-all bg-primary text-on-primary whitespace-nowrap" onclick="switchTab('manicure', this)">Маникюр</button>
 <button class="tab-btn px-5 sm:px-8 py-3 rounded-full font-label-md text-label-md uppercase transition-all text-on-surface-variant hover:text-primary whitespace-nowrap" onclick="switchTab('pedicure', this)">Педикюр</button>
 <button class="tab-btn px-5 sm:px-8 py-3 rounded-full font-label-md text-label-md uppercase transition-all text-on-surface-variant hover:text-primary whitespace-nowrap" onclick="switchTab('care', this)">Ресницы</button>
@@ -822,13 +825,13 @@
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => {
                 btn.classList.remove('bg-primary', 'text-on-primary');
-                btn.classList.add('text-on-surface-variant');
+                btn.classList.add('text-on-surface-variant', 'hover:text-primary');
             });
             
             const activeBtn = element || (window.event && window.event.currentTarget) || document.querySelector(`.tab-btn[onclick*="'${tabId}'"]`);
             if (activeBtn) {
                 activeBtn.classList.add('bg-primary', 'text-on-primary');
-                activeBtn.classList.remove('text-on-surface-variant');
+                activeBtn.classList.remove('text-on-surface-variant', 'hover:text-primary');
             }
 
             const panels = document.querySelectorAll('.tab-panel');
